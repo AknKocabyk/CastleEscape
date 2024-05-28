@@ -1,3 +1,4 @@
+﻿using System.Collections;
 using UnityEngine;
 
 public class PlayerMovementController : MonoBehaviour
@@ -6,9 +7,12 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] private FixedJoystick fixedJoystick;
     [SerializeField] private Transform playerParentTransform;
     [SerializeField] private float playerSpeed;
+    [SerializeField] private float doorOpenSecond;
     [SerializeField] private AnimationController animationController;
+    [SerializeField] private Renderer blueDoorKey;
+    [SerializeField] private Animator doorAnimator;
 
-
+    
     private float _horizontal;
     private float _vertical;
 
@@ -48,4 +52,17 @@ public class PlayerMovementController : MonoBehaviour
         _horizontal = fixedJoystick.Horizontal;
         _vertical = fixedJoystick.Vertical;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("BlueDoorKey"))
+        {
+            print("Kapı Açıldı");
+            blueDoorKey.material.color = Color.yellow;
+            doorAnimator.enabled = true;
+            
+        }
+    }
+
+    
 }
