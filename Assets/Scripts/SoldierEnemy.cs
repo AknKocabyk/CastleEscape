@@ -19,4 +19,5 @@ public class SoldierEnemy : Enemy
             patrolTimer = 0;
         }
     }
+
 }

@@ -10,27 +10,21 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected int damage;
     [SerializeField] protected float cooldown;
     [SerializeField] protected float enemyRotationTime;
+    public  float enemyLevel;
     
     protected GameObject player;
 
-    protected Animator anim;
+    public Animator anim;
     protected Rigidbody rb;
     protected float distance;
     protected float timer;
    
-    public bool dead = false;
+    
     void Start()
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         player = GameObject.FindGameObjectWithTag("Player");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        distance = Vector3.Distance(transform.position, player.transform.position);
-        Attack();
     }
 
     private void FixedUpdate()
@@ -39,21 +33,7 @@ public class Enemy : MonoBehaviour
     }
 
 
-    public void ChangeHealth(int count)
-    {
-        health -= count;
-        if (health <= 0)
-        {
-            dead = true;
-            Destroy(this.gameObject);
-        }
-    }
-
-
     public virtual void Move()
-    {
-    }
-    public virtual void Attack()
     {
     }
 }

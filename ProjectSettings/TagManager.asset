@@ -7,6 +7,7 @@ TagManager:
   - BlueDoorKey
   - OrqangeDoorKey
   - Enemy
+  - Upgrader
   layers:
   - Default
   - TransparentFX
