@@ -53,7 +53,6 @@ public class PlayerMovementController : MonoBehaviour
     private void Movement()
     {
         playerRb.velocity = NewVelocity();
-        animationController.SetBool("Run", _horizontal != 0 || _vertical != 0);
     }
 
     private Vector3 NewVelocity()
@@ -63,13 +62,24 @@ public class PlayerMovementController : MonoBehaviour
 
     private void SetRotation()
     {
-        if(_horizontal != 0 || _vertical != 0)
+        if(_horizontal != 0 || _vertical != 0 && this.gameObject.GetComponent<PlayerTrigger>().isAttacked==false)
         {
             playerParentTransform.rotation = Quaternion.LookRotation(NewVelocity());
+            animationController.SetBool("Run", true);
+            animationController.SetBool("Idle", false);
+            animationController.SetBool("Attack", false);
         }
-        else 
+        else if(this.gameObject.GetComponent<PlayerTrigger>().isAttacked == true)
         {
             animationController.SetBool("Run", false);
+            animationController.SetBool("Idle", false);
+            animationController.SetBool("Attack", true);
+        }
+        else if(_horizontal == 0 || _vertical == 0)
+        {
+            animationController.SetBool("Run", false);
+            animationController.SetBool("Idle", true);
+            animationController.SetBool("Attack",false);
         }
     }
 

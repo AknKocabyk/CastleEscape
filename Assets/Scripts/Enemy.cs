@@ -34,6 +34,11 @@ public class Enemy : MonoBehaviour
         {
             Move();
         }
+        else
+        {
+            this.gameObject.GetComponent<CapsuleCollider>().enabled = false;
+            this.gameObject.GetComponent<Animator>().SetBool("Dead", true);
+        }
 
     }
 

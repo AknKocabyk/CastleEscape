@@ -10,13 +10,10 @@ public class PlayerTrigger : MonoBehaviour
     [SerializeField] private PlayerMovementController playerMovementController;
     [SerializeField] private GameObject keyVfx;
     [SerializeField] private GameObject upgraderVfx;
-    
+
+    public bool isAttacked;
     public float playerLevel;
     private bool key;
-
-    private void Start()
-    {
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -42,26 +39,24 @@ public class PlayerTrigger : MonoBehaviour
             Destroy(vfx, 3f);
             Destroy(other.gameObject);
         }
-
-      
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Enemy") && collision.gameObject.GetComponent<Enemy>().enemyLevel < playerLevel)
         {
-            animationController.SetBool("Attack", true);
-            animationController.SetBool("Run", false); 
-            collision.gameObject.GetComponent<Enemy>().anim.SetBool("Dead", true);
             collision.gameObject.GetComponent<Enemy>().dead=true;
             Destroy(collision.gameObject, 3f);
+            isAttacked = true;
+            Invoke("AttackFalse", 1f);
             print("Düşman Öldürüldü...");
         }
         
         if (collision.gameObject.CompareTag("Enemy") && collision.gameObject.GetComponent<Enemy>().enemyLevel > playerLevel)
         {
-            collision.gameObject.GetComponent<Enemy>().anim.SetBool("Attack", true);
             this.gameObject.GetComponent<PlayerMovementController>().PlayerDead();
+            this.gameObject.GetComponent<CapsuleCollider>().enabled = false;
+            Invoke("LevelManager", 3f);
             print("Game Over...");
         }
 
@@ -70,5 +65,15 @@ public class PlayerTrigger : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             print("Yeni Sahne Yüklendi");
         }
+    }
+
+    void AttackFalse()
+    {
+        isAttacked = false;
+    }
+
+    void LevelManager()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
