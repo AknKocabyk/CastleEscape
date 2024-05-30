@@ -8,6 +8,8 @@ TagManager:
   - OrqangeDoorKey
   - Enemy
   - Upgrader
+  - Key
+  - NextLevel
   layers:
   - Default
   - TransparentFX

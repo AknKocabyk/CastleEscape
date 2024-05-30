@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected float cooldown;
     [SerializeField] protected float enemyRotationTime;
     public  float enemyLevel;
+    public bool dead;
     
     protected GameObject player;
 
@@ -29,7 +30,11 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move();
+        if (!dead)
+        {
+            Move();
+        }
+
     }
 
 

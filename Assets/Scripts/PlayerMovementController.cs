@@ -47,7 +47,7 @@ public class PlayerMovementController : MonoBehaviour
     {
         print("PlayerDead çalıştı");
         this.enabled = false;
-        this.gameObject.SetActive(false);
+        animationController.SetBool("Dead", true);
     }
 
     private void Movement()
@@ -78,8 +78,4 @@ public class PlayerMovementController : MonoBehaviour
         _horizontal = dynamicJoystick.Horizontal;
         _vertical = dynamicJoystick.Vertical;
     }
-
-  
-
-    
 }
