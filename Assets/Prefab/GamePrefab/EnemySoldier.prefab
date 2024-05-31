@@ -344,11 +344,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
-  attackDistance: 5
+  attackDistance: 8
   damage: 5
   cooldown: 5
   enemyRotationTime: 2.5
+  enemyLevel: 100
   dead: 0
+  anim: {fileID: 0}
   speed: 5
   detectionDistance: 5
 --- !u!1 &3257431939334215837

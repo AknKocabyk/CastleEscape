@@ -42,6 +42,12 @@ public class Enemy : MonoBehaviour
 
     }
 
+    public void Attack()
+    {
+        this.gameObject.GetComponent<Animator>().SetBool("Attack", true);
+        this.enabled = false;
+    }
+
 
     public virtual void Move()
     {

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.SceneManagement;
 public class PlayerTrigger : MonoBehaviour
 {
@@ -8,19 +9,26 @@ public class PlayerTrigger : MonoBehaviour
     [SerializeField] private Animator doorAnimator;
     [SerializeField] private AnimationController animationController;
     [SerializeField] private PlayerMovementController playerMovementController;
-    [SerializeField] private GameObject keyVfx;
-    [SerializeField] private GameObject upgraderVfx;
+    [SerializeField] private GameObject keyVfx, upgraderVfx,deadVfx;
+    [SerializeField] private TMP_Text keyPriceText;
 
+
+    public int maxDoorLevelNumber;
     public bool isAttacked;
     public float playerLevel;
-    private bool key;
+    private int keyPrice=0;
+    private int levelDoorNumber=0;
+
+    private void Update()
+    {
+        keyPriceText.text = keyPrice.ToString();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("BlueDoorKey"))
         {
-            print("Kapı Açıldı");
-            blueDoorKey.material.color = Color.yellow;
+            blueDoorKey.material.color = Color.green;
             doorAnimator.enabled = true;
         }
 
@@ -34,10 +42,11 @@ public class PlayerTrigger : MonoBehaviour
 
         if (other.CompareTag("Key"))
         {
-            key = true;
             GameObject vfx = Instantiate(keyVfx, other.transform.position, keyVfx.transform.rotation);
             Destroy(vfx, 3f);
             Destroy(other.gameObject);
+            keyPrice++;
+            levelDoorNumber++;
         }
     }
 
@@ -48,23 +57,33 @@ public class PlayerTrigger : MonoBehaviour
             collision.gameObject.GetComponent<Enemy>().dead=true;
             Destroy(collision.gameObject, 3f);
             isAttacked = true;
+            GameObject vfx = Instantiate(deadVfx, collision.gameObject.transform.position, deadVfx.transform.rotation);
+            Destroy(vfx, 3f);
             Invoke("AttackFalse", 1f);
-            print("Düşman Öldürüldü...");
         }
         
         if (collision.gameObject.CompareTag("Enemy") && collision.gameObject.GetComponent<Enemy>().enemyLevel > playerLevel)
         {
+            collision.gameObject.GetComponent<Enemy>().Attack();
             this.gameObject.GetComponent<PlayerMovementController>().PlayerDead();
             this.gameObject.GetComponent<CapsuleCollider>().enabled = false;
+            GameObject vfx = Instantiate(deadVfx, collision.gameObject.transform.position, deadVfx.transform.rotation);
+            Destroy(vfx, 3f);
             Invoke("LevelManager", 3f);
             print("Game Over...");
         }
 
-        if(collision.gameObject.CompareTag("NextLevel") && key)
+        if(collision.gameObject.CompareTag("NextLevel") && keyPrice>0)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            print("Yeni Sahne Yüklendi");
+            Destroy(collision.gameObject);
+            keyPrice--;
+
+            if (levelDoorNumber == maxDoorLevelNumber)
+            {
+                LevelCompleted();
+            }
         }
+
     }
 
     void AttackFalse()
@@ -75,5 +94,10 @@ public class PlayerTrigger : MonoBehaviour
     void LevelManager()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    void LevelCompleted()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

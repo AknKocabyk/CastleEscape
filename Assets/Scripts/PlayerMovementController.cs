@@ -11,18 +11,12 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] private AnimationController animationController;
     [SerializeField] private float Playerhealth;
 
-    private float _horizontal;
-    private float _vertical;
-    private float distance;
-    private float enemyLevel;
+    private float _horizontal, _vertical;
     public bool playerDead;
 
-    protected GameObject enemy;
-    protected GameObject[] enemies;
 
     private void Start()
     {
-        CheckEnemies();
     }
 
     private void Update()
@@ -37,15 +31,10 @@ public class PlayerMovementController : MonoBehaviour
         SetRotation();
     }
 
-    void CheckEnemies()
-    {
-        enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        Invoke("CheckEnemies", 3f);
-    }
+
 
     public void PlayerDead()
     {
-        print("PlayerDead çalıştı");
         this.enabled = false;
         animationController.SetBool("Dead", true);
     }

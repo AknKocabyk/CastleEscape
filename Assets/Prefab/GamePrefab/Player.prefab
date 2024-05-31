@@ -289,6 +289,8 @@ MonoBehaviour:
   playerMovementController: {fileID: 6878954580991663016}
   keyVfx: {fileID: 100006, guid: 60bc526f4be1e044ab9e46340b82ffb3, type: 3}
   upgraderVfx: {fileID: 100000, guid: 3d4907e6bd39f474b8fd8220920e65c4, type: 3}
+  deadVfx: {fileID: 100006, guid: 2a474af3f4c27be4e9bdce39cfe4315d, type: 3}
+  isAttacked: 0
   playerLevel: 95
 --- !u!114 &6878954580991663016
 MonoBehaviour:
