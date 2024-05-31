@@ -11,6 +11,7 @@ public class PlayerTrigger : MonoBehaviour
     [SerializeField] private PlayerMovementController playerMovementController;
     [SerializeField] private GameObject keyVfx, upgraderVfx,deadVfx;
     [SerializeField] private TMP_Text keyPriceText;
+    [SerializeField] private TMP_Text playerLevelText;
 
 
     public int maxDoorLevelNumber;
@@ -22,6 +23,7 @@ public class PlayerTrigger : MonoBehaviour
     private void Update()
     {
         keyPriceText.text = keyPrice.ToString();
+        playerLevelText.text = playerLevel.ToString();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -48,30 +50,32 @@ public class PlayerTrigger : MonoBehaviour
             keyPrice++;
             levelDoorNumber++;
         }
-    }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy") && collision.gameObject.GetComponent<Enemy>().enemyLevel < playerLevel)
+        if (other.gameObject.CompareTag("Enemy") && other.gameObject.GetComponent<Enemy>().enemyLevel < playerLevel)
         {
-            collision.gameObject.GetComponent<Enemy>().dead=true;
-            Destroy(collision.gameObject, 3f);
+            other.gameObject.GetComponent<Enemy>().dead = true;
+            Destroy(other.gameObject, 3f);
             isAttacked = true;
-            GameObject vfx = Instantiate(deadVfx, collision.gameObject.transform.position, deadVfx.transform.rotation);
+            GameObject vfx = Instantiate(deadVfx, other.gameObject.transform.position, deadVfx.transform.rotation);
             Destroy(vfx, 3f);
             Invoke("AttackFalse", 1f);
         }
-        
-        if (collision.gameObject.CompareTag("Enemy") && collision.gameObject.GetComponent<Enemy>().enemyLevel > playerLevel)
+
+        if (other.gameObject.CompareTag("Enemy") && other.gameObject.GetComponent<Enemy>().enemyLevel > playerLevel)
         {
-            collision.gameObject.GetComponent<Enemy>().Attack();
+            other.gameObject.GetComponent<Enemy>().Attack();
             this.gameObject.GetComponent<PlayerMovementController>().PlayerDead();
             this.gameObject.GetComponent<CapsuleCollider>().enabled = false;
-            GameObject vfx = Instantiate(deadVfx, collision.gameObject.transform.position, deadVfx.transform.rotation);
+            GameObject vfx = Instantiate(deadVfx, other.gameObject.transform.position, deadVfx.transform.rotation);
             Destroy(vfx, 3f);
             Invoke("LevelManager", 3f);
             print("Game Over...");
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+      
 
         if(collision.gameObject.CompareTag("NextLevel") && keyPrice>0)
         {

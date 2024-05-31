@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Enemy : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected int damage;
     [SerializeField] protected float cooldown;
     [SerializeField] protected float enemyRotationTime;
+    [SerializeField] protected TMP_Text enemyLevelText;
+    [SerializeField] protected Image enemyLevelImage;
+
     public  float enemyLevel;
     public bool dead;
     
@@ -28,6 +32,8 @@ public class Enemy : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
+
+
     private void FixedUpdate()
     {
         if (!dead)
@@ -42,10 +48,9 @@ public class Enemy : MonoBehaviour
 
     }
 
-    public void Attack()
+    public virtual void Attack()
     {
-        this.gameObject.GetComponent<Animator>().SetBool("Attack", true);
-        this.enabled = false;
+
     }
 
 
