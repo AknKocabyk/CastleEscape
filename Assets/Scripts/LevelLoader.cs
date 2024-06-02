@@ -28,5 +28,10 @@ public class LevelLoader : MonoBehaviour
 
         SceneManager.LoadScene(levelIndex);
     }
- 
+
+    private void Awake()
+    {
+        Screen.SetResolution(450, 750, true);
+    }
+
 }
