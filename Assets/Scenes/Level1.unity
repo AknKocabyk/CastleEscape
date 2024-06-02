@@ -786,17 +786,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2518030302899599732, guid: b19cec2e54da89f40bbc119c450d1888, type: 3}
   m_PrefabInstance: {fileID: 273973729}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &285729160 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6667010943609721437, guid: e5d0192c3b2a384448645b6777f3bbd2, type: 3}
-  m_PrefabInstance: {fileID: 2053905014}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &292791171
 GameObject:
   m_ObjectHideFlags: 0
@@ -1703,10 +1692,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySoldier (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 6715303753270601608, guid: e5d0192c3b2a384448645b6777f3bbd2, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1777,17 +1762,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9dbb1c79f7aacd04d8fbbbdce574b0e1, type: 3}
---- !u!114 &613118855 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6667010943609721437, guid: e5d0192c3b2a384448645b6777f3bbd2, type: 3}
-  m_PrefabInstance: {fileID: 3016366207753252684}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &613171854
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2593,7 +2567,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -80.89662, y: 62.87389, z: -31}
-  m_LocalScale: {x: 10, y: 1, z: 10}
+  m_LocalScale: {x: 25, y: 1, z: 25}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1002210170}
@@ -3019,17 +2993,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b19cec2e54da89f40bbc119c450d1888, type: 3}
---- !u!114 &1017086199 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8466806202849992474, guid: e5d0192c3b2a384448645b6777f3bbd2, type: 3}
-  m_PrefabInstance: {fileID: 2053905014}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1032684090
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4908,17 +4871,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8511082843530028832, guid: 9dbb1c79f7aacd04d8fbbbdce574b0e1, type: 3}
   m_PrefabInstance: {fileID: 1683048436}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1683218388 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8466806202849992474, guid: e5d0192c3b2a384448645b6777f3bbd2, type: 3}
-  m_PrefabInstance: {fileID: 3016366207753252684}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1687273908 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4934661184091276161, guid: 6128b2763bc2a944a97bf9447aec8f6e, type: 3}
@@ -5698,22 +5650,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySoldier (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 6715303753270601608, guid: e5d0192c3b2a384448645b6777f3bbd2, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7144036033910489914, guid: e5d0192c3b2a384448645b6777f3bbd2, type: 3}
       propertyPath: enemyLevel
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 7144036033910489914, guid: e5d0192c3b2a384448645b6777f3bbd2, type: 3}
-      propertyPath: enemyLevelText
-      value: 
-      objectReference: {fileID: 1017086199}
-    - target: {fileID: 7144036033910489914, guid: e5d0192c3b2a384448645b6777f3bbd2, type: 3}
-      propertyPath: enemyLevelImage
-      value: 
-      objectReference: {fileID: 285729160}
     - target: {fileID: 7144036033910489914, guid: e5d0192c3b2a384448645b6777f3bbd2, type: 3}
       propertyPath: enemyRotationTime
       value: 2.4
@@ -6547,10 +6487,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1251839301960861969, guid: 6128b2763bc2a944a97bf9447aec8f6e, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.000061035156
-      objectReference: {fileID: 0}
     - target: {fileID: 3702539656556831073, guid: 6128b2763bc2a944a97bf9447aec8f6e, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -6630,6 +6566,10 @@ PrefabInstance:
     - target: {fileID: 3702539656556831073, guid: 6128b2763bc2a944a97bf9447aec8f6e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6482307548792457082, guid: 6128b2763bc2a944a97bf9447aec8f6e, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8604601475299629467, guid: 6128b2763bc2a944a97bf9447aec8f6e, type: 3}
       propertyPath: m_Name
@@ -6712,22 +6652,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySoldier
       objectReference: {fileID: 0}
-    - target: {fileID: 6715303753270601608, guid: e5d0192c3b2a384448645b6777f3bbd2, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7144036033910489914, guid: e5d0192c3b2a384448645b6777f3bbd2, type: 3}
       propertyPath: enemyLevel
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 7144036033910489914, guid: e5d0192c3b2a384448645b6777f3bbd2, type: 3}
-      propertyPath: enemyLevelText
-      value: 
-      objectReference: {fileID: 1683218388}
-    - target: {fileID: 7144036033910489914, guid: e5d0192c3b2a384448645b6777f3bbd2, type: 3}
-      propertyPath: enemyLevelImage
-      value: 
-      objectReference: {fileID: 613118855}
     - target: {fileID: 7144036033910489914, guid: e5d0192c3b2a384448645b6777f3bbd2, type: 3}
       propertyPath: enemyRotationTime
       value: 2.4
@@ -6749,6 +6677,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3332878498982468000, guid: 4c0abf85c6facc5449bf10a21470a087, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 595909135}
     - target: {fileID: 3689302715826706243, guid: 4c0abf85c6facc5449bf10a21470a087, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.092
@@ -6793,14 +6725,6 @@ PrefabInstance:
       propertyPath: music
       value: 
       objectReference: {fileID: 595909137}
-    - target: {fileID: 5752372932215850788, guid: 4c0abf85c6facc5449bf10a21470a087, type: 3}
-      propertyPath: itemSfx
-      value: 
-      objectReference: {fileID: 8300000, guid: 808b1c1bb474b2e4e81f482b61c5af1f, type: 3}
-    - target: {fileID: 5752372932215850788, guid: 4c0abf85c6facc5449bf10a21470a087, type: 3}
-      propertyPath: gameOverSfx
-      value: 
-      objectReference: {fileID: 8300000, guid: 03008ae70b49bde45a53545060c413d2, type: 3}
     - target: {fileID: 5752372932215850788, guid: 4c0abf85c6facc5449bf10a21470a087, type: 3}
       propertyPath: doorAnimator
       value: 

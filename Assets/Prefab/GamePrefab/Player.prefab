@@ -296,8 +296,8 @@ MonoBehaviour:
   playerLevelText: {fileID: 70772645766115467}
   music: {fileID: 0}
   sound: {fileID: 282837882895241450}
-  itemSfx: {fileID: 0}
-  gameOverSfx: {fileID: 0}
+  itemSfx: {fileID: 8300000, guid: 808b1c1bb474b2e4e81f482b61c5af1f, type: 3}
+  gameOverSfx: {fileID: 8300000, guid: 03008ae70b49bde45a53545060c413d2, type: 3}
   maxDoorLevelNumber: 2
   isAttacked: 0
   playerLevel: 5
