@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 public class PlayerTrigger : MonoBehaviour
 {
-    [SerializeField] private Renderer blueDoorKey;
+    [SerializeField] private Renderer orangeDoorKey;
     [SerializeField] private Animator doorAnimator;
     [SerializeField] private AnimationController animationController;
     [SerializeField] private PlayerMovementController playerMovementController;
@@ -28,9 +28,9 @@ public class PlayerTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("BlueDoorKey"))
+        if (other.CompareTag("OrangeDoorKey"))
         {
-            blueDoorKey.material.color = Color.green;
+            orangeDoorKey.material.color = Color.green;
             doorAnimator.enabled = true;
         }
 
@@ -68,7 +68,7 @@ public class PlayerTrigger : MonoBehaviour
             this.gameObject.GetComponent<CapsuleCollider>().enabled = false;
             GameObject vfx = Instantiate(deadVfx, other.gameObject.transform.position, deadVfx.transform.rotation);
             Destroy(vfx, 3f);
-            Invoke("LevelManager", 3f);
+            Invoke("LevelLose", 3f);
             print("Game Over...");
         }
     }
@@ -95,13 +95,13 @@ public class PlayerTrigger : MonoBehaviour
         isAttacked = false;
     }
 
-    void LevelManager()
+    void LevelLose()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        GameObject.FindGameObjectWithTag("LevelLoader").GetComponent<LevelLoader>().LoadActiveScene();
     }
 
     void LevelCompleted()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        GameObject.FindGameObjectWithTag("LevelLoader").GetComponent<LevelLoader>().LoadNextLevel();
     }
 }
