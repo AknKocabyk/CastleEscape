@@ -12,6 +12,8 @@ public class PlayerTrigger : MonoBehaviour
     [SerializeField] private GameObject keyVfx, upgraderVfx,deadVfx;
     [SerializeField] private TMP_Text keyPriceText;
     [SerializeField] private TMP_Text playerLevelText;
+    [SerializeField] AudioSource music, sound;
+    [SerializeField] AudioClip itemSfx, gameOverSfx;
 
 
     public int maxDoorLevelNumber;
@@ -32,12 +34,16 @@ public class PlayerTrigger : MonoBehaviour
         {
             orangeDoorKey.material.color = Color.green;
             doorAnimator.enabled = true;
+            sound.clip = itemSfx;
+            sound.Play();
         }
 
         if (other.CompareTag("Upgrader"))
         {
             playerLevel+=10;
             GameObject vfx = Instantiate(upgraderVfx, other.transform.position, upgraderVfx.transform.rotation);
+            sound.clip = itemSfx;
+            sound.Play();
             Destroy(vfx, 3f);
             Destroy(other.gameObject);
         }
@@ -47,6 +53,8 @@ public class PlayerTrigger : MonoBehaviour
             GameObject vfx = Instantiate(keyVfx, other.transform.position, keyVfx.transform.rotation);
             Destroy(vfx, 3f);
             Destroy(other.gameObject);
+            sound.clip = itemSfx;
+            sound.Play();
             keyPrice++;
             levelDoorNumber++;
         }
@@ -67,6 +75,9 @@ public class PlayerTrigger : MonoBehaviour
             this.gameObject.GetComponent<PlayerMovementController>().PlayerDead();
             this.gameObject.GetComponent<CapsuleCollider>().enabled = false;
             GameObject vfx = Instantiate(deadVfx, other.gameObject.transform.position, deadVfx.transform.rotation);
+            sound.clip = gameOverSfx;
+            sound.Play();
+            music.Stop();
             Destroy(vfx, 3f);
             Invoke("LevelLose", 3f);
             print("Game Over...");
